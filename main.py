@@ -70,4 +70,4 @@ if __name__ == '__main__':
             )
             data = response.json()
             if data.get('data') and data.get('data').get('triggerManualDeployment') and data.get('data').get('triggerManualDeployment').get('status') == 'DOING':
-                break
+                first_timestamp = time.time()
