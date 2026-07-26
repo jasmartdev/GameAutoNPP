@@ -40,7 +40,6 @@ if __name__ == '__main__':
     sleep_time_base = 145
     sleep_time_er = 180
     sleep_time = sleep_time_base
-    first_timestamp = time.time()
     while True:
         requests.post(
         url=start_mission_url, 
@@ -60,14 +59,3 @@ if __name__ == '__main__':
             sleep_time = sleep_time_er
         else:
             sleep_time = sleep_time_base
-        current_timestamp = time.time()
-        if current_timestamp - first_timestamp > 3300:
-            response = requests.post(
-            url=back4ap_url, 
-            headers=back4ap_headers, 
-            data=back4ap_body,
-            timeout=160
-            )
-            data = response.json()
-            if data.get('data') and data.get('data').get('triggerManualDeployment') and data.get('data').get('triggerManualDeployment').get('status') == 'DOING':
-                first_timestamp = time.time()
