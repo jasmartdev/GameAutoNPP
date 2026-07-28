@@ -43,6 +43,7 @@ if __name__ == '__main__':
             data_error = data_error[:-11]
             data_error = data_error[58:]
             current_missionId = int(data_error.strip())
+            continue
         complete_mission_body = mission_complete_mission_body
         json_data = json.loads(complete_mission_body.decode('utf-8'))
         json_data['missionId'] = current_missionId
