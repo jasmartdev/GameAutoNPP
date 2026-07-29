@@ -29,7 +29,7 @@ if __name__ == '__main__':
     current_sleep_time = 80
     is_test_monsters = True
     is_complete_mission = False
-    #Challenge
+    
     monsters_killed_array = [319, 404, 440, 341]
     current_worldId = 77
     challengen_state = 0 #0: chua kiem tra, 1: da kiem tra, 2: da bat dau, 3: da ket thuc
@@ -86,7 +86,7 @@ if __name__ == '__main__':
                 current_missionId = current_missionId + 1
             elif data.get('rewardsApplied') and data.get('rewardsApplied').get('totalGold') == 0:
                 is_complete_mission = True
-            #Challenge
+                
             if challengen_state == 0:
                 if data.get('player') and data.get('player').get('challengeCurrentWorld'):
                     current_worldId = data.get('player').get('challengeCurrentWorld')
@@ -114,6 +114,6 @@ if __name__ == '__main__':
                     complete_challenge_body = json.dumps(json_data).encode('utf-8')
                     response = requests.post(
                     url=challenge_complete_challenge_url, 
-                    headers=game_headers, 
+                    , 
                     data=complete_challenge_body
                     )
