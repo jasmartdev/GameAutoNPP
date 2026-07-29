@@ -32,7 +32,7 @@ if __name__ == '__main__':
     is_complete_mission = False
     
     monsters_killed_array = [319, 404, 440, 341]
-    current_worldId = 77
+    current_worldId = 1
     challengen_state = 0 #0: chua kiem tra, 1: da kiem tra, 2: da bat dau, 3: da ket thuc
     start_challegen_time = 0
     while True:
