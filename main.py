@@ -47,10 +47,13 @@ if __name__ == '__main__':
         )
         data = response.json()
         data_error = data.get('error')
-        if data_error and 'Cannot replay completed mission' in data_error:
-            numbers = re.findall(r"\d+", data_error)
-            current_missionId = int(numbers[1] if len(numbers) >  1 else None)
-            continue
+        if data_error:
+            if 'Cannot replay completed mission' in data_error:
+                numbers = re.findall(r"\d+", data_error)
+                current_missionId = int(numbers[1] if len(numbers) >  1 else None)
+                continue
+            else:
+                time.sleep(current_sleep_time * 2)
         complete_mission_body = mission_complete_mission_body
         json_data = json.loads(complete_mission_body.decode('utf-8'))
         json_data['missionId'] = current_missionId
