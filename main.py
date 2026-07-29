@@ -49,7 +49,7 @@ if __name__ == '__main__':
         data_error = data.get('error')
         if data_error and 'Cannot replay completed mission' in data_error:
             numbers = re.findall(r"\d+", data_error)
-            current_missionId = numbers[1] if len(numbers) >  1 else None
+            current_missionId = int(numbers[1] if len(numbers) >  1 else None)
             continue
         complete_mission_body = mission_complete_mission_body
         json_data = json.loads(complete_mission_body.decode('utf-8'))
