@@ -98,11 +98,11 @@ if __name__ == '__main__':
                         json_data = json.loads(start_challenge_body.decode('utf-8'))
                         json_data['worldId'] = current_worldId
                         start_challenge_body = json.dumps(json_data).encode('utf-8')
-                        requests.post(
-                        url=challenge_start_challenge_url, 
-                        headers=game_headers, 
-                        data=start_challenge_body
-                        )
+                        #requests.post(
+                        #url=challenge_start_challenge_url, 
+                        #headers=game_headers, 
+                        #data=start_challenge_body
+                        #)
                         start_challegen_time = time.time()
             elif challengen_state == 2:
                 if time.time() - start_challegen_time > 300:
@@ -114,6 +114,6 @@ if __name__ == '__main__':
                     complete_challenge_body = json.dumps(json_data).encode('utf-8')
                     response = requests.post(
                     url=challenge_complete_challenge_url, 
-                    , 
+                    headers=game_headers, 
                     data=complete_challenge_body
                     )
