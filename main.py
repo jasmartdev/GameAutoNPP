@@ -87,7 +87,7 @@ if __name__ == '__main__':
                 is_test_monsters = True
                 is_complete_mission = False
                 current_missionId = current_missionId + 1
-            elif data.get('rewardsApplied') and data.get('rewardsApplied').get('totalGold') == 0:
+            elif data.get('goldLimit') and data.get('goldLimit').get('earnedAfter') == data.get('goldLimit').get('cap'):
                 is_complete_mission = True
                 
             if challengen_state == 0:
