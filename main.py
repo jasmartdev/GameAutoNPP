@@ -20,7 +20,6 @@ if __name__ == '__main__':
     current_sleep_time = 80
     is_test_monsters = True
     is_complete_mission = False
-    #Challenge
     challengen_monsters_killed_array = [319, 404, 440, 341]
     current_worldId = 1
     challengen_state = 0 #0: chua kiem tra, 1: da kiem tra, 2: da bat dau
@@ -129,13 +128,13 @@ if __name__ == '__main__':
                         # continue
                     # challengen_state = 0
             #GoldeCave
-            if start_goldecave_time == 0:
+            if goldecave_state == 0:
                 if data.get('player') and data.get('player').get('goldMineCurrentLevel'):
                     current_level = data.get('player').get('goldMineCurrentLevel')
                     if data.get('player').get('goldMineTickets') == 0 and data.get('player').get('goldMineAdUsedThisCycle') == False:
-                        start_goldecave_time = 1
+                        goldecave_state = 1
                     else:
-                        start_goldecave_time = 2
+                        goldecave_state = 2
                         if data.get('player').get('goldMineTickets') != 0:
                             account1.set_start_goldecave_body(False)
                         else:
@@ -150,7 +149,7 @@ if __name__ == '__main__':
                             print(e)
                             continue
                         start_goldecave_time = time.time()
-            elif start_goldecave_time == 2:
+            elif goldecave_state == 2:
                 if time.time() - start_goldecave_time > 300:
                     account1.set_complete_goldecave_body(current_level, True, goldecave_monsters_killed_array[current_level%5])
                     try:
