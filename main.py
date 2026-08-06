@@ -93,7 +93,7 @@ if __name__ == '__main__':
                 is_test_monsters = True
                 is_complete_mission = False
                 current_missionId = current_missionId + 1
-            elif data.get('goldLimit') and data.get('goldLimit').get('earnedAfter') == data.get('goldLimit').get('cap') and current_missionId < 40:
+            elif data.get('goldLimit') and data.get('goldLimit').get('earnedAfter') == data.get('goldLimit').get('cap') and current_missionId < 240:
                 is_complete_mission = True
             #Challenge
             if challengen_state == 0:
