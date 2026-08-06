@@ -14,9 +14,14 @@ class Account:
         self.start_challenge_body = b'{"worldId":1}'
         self.complete_challenge_url = 'https://defense-wall-production.up.railway.app/api/player/{0}/challenge/complete'
         self.complete_challenge_body = b'{"worldId":1,"victory":true,"wavesCompleted":10,"monstersKilled":1000,"battleEvents":[],"antiCheat":{"version":1,"team":[1,11,4,5,12],"waves":[]}}'
+        self.start_goldecave_url = 'https://defense-wall-production.up.railway.app/api/player/{0}/goldMine/complete'
+        self.start_goldecave_body = b'{"viaAd":true}'
+        self.complete_goldecave_url = 'https://defense-wall-production.up.railway.app/api/player/{0}/goldMine/complete'
+        self.complete_goldecave_body = b'{"level":1,"victory":true,"wavesCompleted":5,"monstersKilled":110,"battleEvents":[]}'
         self.forge_claim_url = 'https://defense-wall-production.up.railway.app/api/player/{0}/forge/claim'
         self.forge_claim_body = b'{"slotIndex":1}'
         self.forge_craft_url = 'https://defense-wall-production.up.railway.app/api/player/{0}/forge/craft'
+        self.rewards_url = 'https://defense-wall-production.up.railway.app/api/player/{0}/idle/open-rewards'
         self.headers['authorization']=authorization
         self.start_mission_url = self.start_mission_url.format(self.id)
         self.complete_mission_url = self.complete_mission_url.format(self.id)
@@ -24,6 +29,7 @@ class Account:
         self.complete_challenge_url = self.complete_challenge_url.format(self.id)
         self.forge_claim_url = self.forge_claim_url.format(self.id)
         self.forge_craft_url = self.forge_craft_url.format(self.id)
+        self.rewards_url = self.rewards_url.format(self.id)
 
     def get_headers(self):
         return self.headers
@@ -63,6 +69,24 @@ class Account:
         self.complete_challenge_body = json.dumps(json_data).encode('utf-8')
     def get_complete_challenge_body(self):
         return self.complete_challenge_body
+    def get_start_goldecave_url(self):
+        return self.start_goldecave_url
+    def set_start_goldecave_body(self, viaAd):
+        json_data = json.loads(self.start_goldecave_body.decode('utf-8'))
+        json_data['viaAd'] = viaAd
+        self.start_goldecave_body = json.dumps(json_data).encode('utf-8')
+    def get_start_goldecave_body(self):
+        return self.start_goldecave_body
+    def get_complete_goldecave_url(self):
+        return self.complete_goldecave_url
+    def set_complete_goldecave_body(self, level, victory, monstersKilled):
+        json_data = json.loads(self.complete_goldecave_body.decode('utf-8'))
+        json_data['level'] = level
+        json_data['victory'] = victory
+        json_data['monstersKilled'] = monstersKilled
+        self.complete_goldecave_body = json.dumps(json_data).encode('utf-8')
+    def get_complete_goldecave_body(self):
+        return self.complete_goldecave_body
     def get_forge_claim_url(self):
         return self.forge_claim_url
     def set_forge_claim_body(self, slotIndex):
@@ -73,3 +97,5 @@ class Account:
         return self.forge_claim_body
     def get_forge_craft_url(self):
         return self.forge_craft_url
+    def get_rewards_url(self):
+        return self.rewards_url
