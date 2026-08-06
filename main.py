@@ -69,47 +69,16 @@ if __name__ == '__main__':
                 current_sleep_time = current_sleep_time + 20
             elif 'Invalid monstersKilled' in data_error:
                 current_monstersKilled = int(data.get('error').split('-')[1]) - 1
-                current_sleep_time = current_monstersKilled*0.5
+                current_sleep_time = current_monstersKilled*0.7
                 is_test_monsters =  False
         elif data.get('success'):
             if is_complete_mission:
                 is_test_monsters = True
                 is_complete_mission = False
                 current_missionId = current_missionId + 1
-            elif data.get('goldLimit') and data.get('goldLimit').get('earnedAfter') == data.get('goldLimit').get('cap') and current_missionId < 30:
+            elif data.get('goldLimit') and data.get('goldLimit').get('earnedAfter') == data.get('goldLimit').get('cap') and current_missionId < 40:
                 is_complete_mission = True
             #Challenge
-            if challengen_state == 0:
-                if data.get('player') and data.get('player').get('challengeCurrentWorld'):
-                    current_worldId = data.get('player').get('challengeCurrentWorld')
-                    if data.get('player').get('challengeTickets') == 0:
-                        challengen_state = 1
-                    else:
-                        challengen_state = 2
-                        account1.set_start_challenge_body(current_worldId)
-                        try:
-                            utils_game.my_print_response(requests.post(
-                                url=account1.get_start_challenge_url(), 
-                                headers=game_headers, 
-                                data=account1.get_start_challenge_body()
-                            ))
-                        except Exception as e:
-                            print(e)
-                            continue
-                        start_challegen_time = time.time()
-            elif challengen_state == 2:
-                if time.time() - start_challegen_time > 300:
-                    account1.set_complete_challenge_body(current_worldId, True, monsters_killed_array[current_worldId%4])
-                    try:
-                        utils_game.my_print_response(requests.post(
-                            url=account1.get_complete_challenge_url(), 
-                            headers=game_headers, 
-                            data=account1.get_complete_challenge_body()
-                        ))
-                    except Exception as e:
-                        print(e)
-                        continue
-                    challengen_state = 0
             #Forge
             if data.get('player'):
                 forgeSlots = data.get('player').get('forgeSlots')
