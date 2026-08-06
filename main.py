@@ -13,7 +13,7 @@ if __name__ == '__main__':
     #JSMD
     # account1 = Account(authorization='Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwbGF5ZXJJZCI6ImQ0ZTVjYzc0LWU4ZTEtNDFmNC05MmQ2LTE0NTBhNTk2ZTRhZSIsImlhdCI6MTc4NTI0NzQ4NSwiZXhwIjoxNzkzMDIzNDg1fQ.okSBjmZkK4RUYOUXs0mU2pWBhB6kIEKPQeE4VXEaBFc', id='d4e5cc74-e8e1-41f4-92d6-1450a596e4ae')
     #NPP
-    account1 = Account(authorization='Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwbGF5ZXJJZCI6IjA2MGUxNjNiLWJhZmMtNDNmNS1iNmI2LWEzNjY1ZTFkZTAxOCIsImlhdCI6MTc4NTkzNTM4MiwiZXhwIjoxNzkzNzExMzgyfQ.4h0hnwF6tRa0DyBnbPhquQGhaaQXXYH7Qc7_C1YqUAg', id='060e163b-bafc-43f5-b6b6-a3665e1de018')
+    account1 = Account(authorization='Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwbGF5ZXJJZCI6IjA2MGUxNjNiLWJhZmMtNDNmNS1iNmI2LWEzNjY1ZTFkZTAxOCIsImlhdCI6MTc4NTk4OTU5NiwiZXhwIjoxNzkzNzY1NTk2fQ.yETe9k36GOjI9MytKJOPmBY_opb4-AzWVrbPeD1hILo', id='060e163b-bafc-43f5-b6b6-a3665e1de018')
     game_headers = account1.get_headers()
     current_missionId = 1
     current_monstersKilled = 1000
@@ -36,7 +36,7 @@ if __name__ == '__main__':
         data = response.json()
     except Exception as e:
         print(e)
-    #utils_game.my_print(data)
+    utils_game.my_print(data)
     if data.get('success'):
         if data.get('player') and data.get('player').get('currentMission'):
             current_missionId = data.get('player').get('currentMission')
@@ -52,7 +52,7 @@ if __name__ == '__main__':
         except Exception as e:
             print(e)
             continue
-        #utils_game.my_print(data)
+        utils_game.my_print(data)
         data_error = data.get('error')
         if data_error:
             if 'Cannot replay completed mission' in data_error:
@@ -79,7 +79,7 @@ if __name__ == '__main__':
         except Exception as e:
             print(e)
             continue
-        #utils_game.my_print(data)
+        utils_game.my_print(data)
         data_error = data.get('error')
         if data_error:
             if data.get('code') == 'SERVER_ERROR':
@@ -112,7 +112,6 @@ if __name__ == '__main__':
                             ))
                         except Exception as e:
                             print(e)
-                            continue
                         start_challegen_time = time.time()
             elif challengen_state == 2:
                 if time.time() - start_challegen_time > 300:
@@ -125,7 +124,6 @@ if __name__ == '__main__':
                         ))
                     except Exception as e:
                         print(e)
-                        continue
                     challengen_state = 0
             #GoldeCave
             if goldecave_state == 0:
@@ -147,7 +145,6 @@ if __name__ == '__main__':
                             ))
                         except Exception as e:
                             print(e)
-                            continue
                         start_goldecave_time = time.time()
             elif goldecave_state == 2:
                 if time.time() - start_goldecave_time > 300:
@@ -160,7 +157,6 @@ if __name__ == '__main__':
                         ))
                     except Exception as e:
                         print(e)
-                        continue
                     goldecave_state = 0
             #Forge
             if data.get('player'):
@@ -185,7 +181,6 @@ if __name__ == '__main__':
                                     ))
                             except Exception as e:
                                 print(e)
-                                continue
                         else:
                             try:
                                 utils_game.my_print_response(requests.post(
@@ -194,5 +189,4 @@ if __name__ == '__main__':
                                 ))
                             except Exception as e:
                                 print(e)
-                                continue
                         i = i + 1
