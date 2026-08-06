@@ -22,7 +22,7 @@ if __name__ == '__main__':
     is_complete_mission = False
     challengen_monsters_killed_array = [319, 404, 440, 341]
     current_worldId = 1
-    challengen_state = 1 #0: chua kiem tra, 1: da kiem tra, 2: da bat dau
+    challengen_state = 0 #0: chua kiem tra, 1: da kiem tra, 2: da bat dau
     start_challegen_time = 0
     goldecave_monsters_killed_array = [194, 110, 149, 184, 50]
     current_level = 1
