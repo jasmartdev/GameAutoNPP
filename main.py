@@ -161,7 +161,7 @@ if __name__ == '__main__':
                     except Exception as e:
                         print(e)
                         continue
-                    start_goldecave_time = 0
+                    goldecave_state = 0
             #Forge
             if data.get('player'):
                 forgeSlots = data.get('player').get('forgeSlots')
