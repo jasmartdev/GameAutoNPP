@@ -14,7 +14,7 @@ class Account:
         self.start_challenge_body = b'{"worldId":1}'
         self.complete_challenge_url = 'https://defense-wall-production.up.railway.app/api/player/{0}/challenge/complete'
         self.complete_challenge_body = b'{"worldId":1,"victory":true,"wavesCompleted":10,"monstersKilled":1000,"battleEvents":[],"antiCheat":{"version":1,"team":[1,11,4,5,12],"waves":[]}}'
-        self.start_goldecave_url = 'https://defense-wall-production.up.railway.app/api/player/{0}/goldMine/complete'
+        self.start_goldecave_url = 'https://defense-wall-production.up.railway.app/api/player/{0}/goldMine/start'
         self.start_goldecave_body = b'{"viaAd":true}'
         self.complete_goldecave_url = 'https://defense-wall-production.up.railway.app/api/player/{0}/goldMine/complete'
         self.complete_goldecave_body = b'{"level":1,"victory":true,"wavesCompleted":5,"monstersKilled":110,"battleEvents":[]}'
