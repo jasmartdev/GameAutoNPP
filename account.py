@@ -27,6 +27,8 @@ class Account:
         self.complete_mission_url = self.complete_mission_url.format(self.id)
         self.start_challenge_url = self.start_challenge_url.format(self.id)
         self.complete_challenge_url = self.complete_challenge_url.format(self.id)
+        self.start_goldecave_url = self.start_goldecave_url.format(self.id)
+        self.complete_goldecave_url = self.complete_goldecave_url.format(self.id)
         self.forge_claim_url = self.forge_claim_url.format(self.id)
         self.forge_craft_url = self.forge_craft_url.format(self.id)
         self.rewards_url = self.rewards_url.format(self.id)
